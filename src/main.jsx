@@ -1,32 +1,49 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./About.jsx";
 import Contact from "./Contact.jsx";
 import More from "./More.jsx";
 import Home from "./Home.jsx";
+import NavigateButton from "./NavigateButton.js";
+
+const Applayout = () => {
+  return (
+    <>
+      <Outlet />
+      <br />
+      <NavigateButton />
+    </>
+  );
+};
 
 const routers = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/more",
-    element: <More />,
+    element: <Applayout />,
+    children: [
+      {
+        path: "/",
+        element: <App />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/more",
+        element: <More />,
+      },
+    ],
   },
 ]);
 
