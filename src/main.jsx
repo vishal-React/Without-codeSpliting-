@@ -11,7 +11,7 @@ import NavigateButton from "./NavigateButton.js";
 const Applayout = () => {
   return (
     <>
-      <h1>Without CodeSpliting</h1>
+      <h1>Without CodeSpliting try</h1>
       <Outlet />
       <br />
       <NavigateButton />
